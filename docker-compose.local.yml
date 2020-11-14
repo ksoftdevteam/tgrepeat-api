@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  ra-api:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    command: python app/application.py
+    image: ra-api
+    container_name: ra-api
+    restart: always
+    ports:
+      - "90:5000"
+    env_file:
+      - ".env"
+    volumes:
+      - ./logs:/app/logs
